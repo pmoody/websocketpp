@@ -31,6 +31,10 @@
 #include <websocketpp/common/memory.hpp>
 #include <string>
 
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
 #ifdef _WIN32
 
 #include <websocketpp/common/string_utils.hpp>
@@ -196,7 +200,7 @@ private:
 }           // lib
 }               // websocket
 
-#elif defined(__APPLE__) // _WIN32
+#elif defined(__APPLE__) && TARGET_OS_OSX // _WIN32
 
 #include <GSS/GSS.h> // the library that lets us request kerberos tokens - https://tools.ietf.org/html/rfc2744
 #include <Security/Security.h>
